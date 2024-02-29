@@ -1,0 +1,15 @@
+<h1>Ecuaciones:</h1>
+
+<input type="text" title="ecuacion" [(ngModel)] = "currentEquation.eq">
+<input type="number" min="1" title="lambda" [(ngModel)] = "currentEquation.lambda">
+<button (click)="add()">Add</button>
+<br>
+
+<ul *ngFor="let equation of equations">
+    <li>
+        {{equation.eq}}, {{equation.lambda}} &nbsp; 
+        <span (click)="remove(equation)">Remove</span>
+    </li>
+</ul>
+
+<button (click)="generarHamiltoniano()">Generar Hamiltoniano</button>
