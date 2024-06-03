@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { equation } from './equation';
 import { EcuacionesService } from '../ecuaciones.service';
+import { ManagerService } from '../manager.service';
 
 @Component({
   selector: 'app-ecuaciones',
@@ -15,8 +16,9 @@ export class EcuacionesComponent {
   
   currentEquation : equation = new equation()
   equations : equation[] = []
+  respuesta? : string
 
-  constructor(private service : EcuacionesService) {}
+  constructor(private service : EcuacionesService, private manager : ManagerService) {}
   
   add() {
     this.equations.push(this.currentEquation)
@@ -31,14 +33,17 @@ export class EcuacionesComponent {
     }
   }
 
+  //ME FALTAN COSAS POR AQUI POR ACA Y POR TODAS PARTES!!
   generarHamiltoniano() {
-    this.service.generarHamiltoniano(this.equations).subscribe(
-      result => { 
-        alert("fue bien")
-      },
-      error => {
-        alert("error")
-      }
-    )
+    if (this.manager.token) {
+      this.service.generarHamiltoniano(this.manager.token, this.equations).subscribe(
+        result => { 
+          //this.respuesta = result.respuesta
+        },
+        error => {
+          alert("error")
+        }
+      )
+    }
   }
 }

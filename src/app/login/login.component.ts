@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../users.service';
+import { ManagerService } from '../manager.service';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,14 @@ export class LoginComponent {
   pwd: string = ""
   error: string = ""
 
-  constructor(private service: UsersService) {}
+  constructor(private service: UsersService, private manager : ManagerService) {}
 
   login() {
     this.service.login(this.email, this.pwd).subscribe(
       result => {
-        localStorage.setItem("token", result.token)
-        sessionStorage.setItem("token", result.token)
+        //localStorage.setItem("token", result.token)
+        //sessionStorage.setItem("token", result.token)
+        this.manager.token = result.token
       },
       error => {
         this.error = error
