@@ -1,0 +1,37 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #121212;
+    color: #ffffff;
+}
+  
+.app-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+  
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+  
+.spacer {
+    flex: 1 1 auto;
+}
+  
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+}
+  
+.main-content img {
+    max-width: 100%;
+    height: auto;
+}

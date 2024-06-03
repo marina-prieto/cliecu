@@ -1,9 +1,12 @@
-<app-register></app-register>
-
-<br>
-
-<app-login></app-login>
-
-<br>
-
-<app-ecuaciones></app-ecuaciones>
+<div class="app-container">
+    <mat-toolbar color="primary">
+      <span>Hamiltonia.net</span>
+      <span class="spacer"></span>
+      <button mat-button [routerLink]="['/register']">Register</button>
+      <button mat-button [routerLink]="['/login']">Login</button>
+      <button mat-button [routerLink]="['/ecuaciones']">Ecuaciones</button>
+    </mat-toolbar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+</div>
