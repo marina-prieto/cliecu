@@ -7,29 +7,27 @@ import { UsersService } from '../users.service';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
 
-  email: string = ""
-  pwd1: string = ""
-  pwd2: string = ""
-  error: string = ""
+  email: string = "";
+  pwd1: string = "";
+  pwd2: string = "";
+  error: string = "";
 
   constructor(private service: UsersService) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   registrar() {
     this.service.registrar(this.email, this.pwd1, this.pwd2).subscribe(
-      result => {
-        alert("registro correcto")
+      () => {
+        alert("Registro correcto");
       },
       error => {
-        this.error = error
+        this.error = error.error.message || 'Error en el registro';
       }
-    )
+    );
   }
 }

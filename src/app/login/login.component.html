@@ -1,11 +1,17 @@
 <div>
-    <h4> Iniciar sesión </h4>
+    <h1> Iniciar sesión </h1>
 
-    Correo: <input type="email" title="email" [(ngModel)]="email">
+    <div>
+        <label>Correo:</label>
+        <input type="email" title="email" [(ngModel)]="email" required>
+    </div>
     <br>
-    Contraseña: <input type="password" title="pwd1" [(ngModel)]="pwd">
+    <div>
+        <label>Contraseña:</label>
+        <input type="password" title="pwd1" [(ngModel)]="pwd" required>
+    </div>
     <br>
-    <button (clic)="login()"> Iniciar sesión </button>
+    <button (click)="login()"> Iniciar sesión </button>
     <br>
     <span style="color: red">{{error}}</span>
 </div>

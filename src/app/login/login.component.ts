@@ -9,26 +9,25 @@ import { ManagerService } from '../manager.service';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  email: string = ""
-  pwd: string = ""
-  error: string = ""
+  email: string = "";
+  pwd: string = "";
+  error: string = "";
 
-  constructor(private service: UsersService, private manager : ManagerService) {}
+  constructor(private service: UsersService, private manager: ManagerService) {}
 
   login() {
     this.service.login(this.email, this.pwd).subscribe(
       result => {
-        //localStorage.setItem("token", result.token)
-        //sessionStorage.setItem("token", result.token)
-        this.manager.token = result.token
+        this.manager.token = result.token;
+        alert("Inicio de sesión correcto");
       },
       error => {
-        this.error = error
+        this.error = error.error.message || 'Error en el inicio de sesión';
       }
-    )
+    );
   }
 }

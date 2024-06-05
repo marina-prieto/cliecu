@@ -1,13 +1,22 @@
 <div>
-    <h4> Crear cuenta </h4>
+    <h1> Crear cuenta </h1>
 
-    Correo: <input type="email" title="email" [(ngModel)]="email">
+    <div>
+        <label>Correo:</label>
+        <input type="email" title="email" [(ngModel)]="email" required>
+    </div>
     <br>
-    Contraseña: <input type="password" title="pwd1" [(ngModel)]="pwd1">
+    <div>
+        <label>Contraseña:</label>
+        <input type="password" title="pwd1" [(ngModel)]="pwd1" required>
+    </div>
     <br>
-    Repita la contraseña: <input type="password" title="pwd2" [(ngModel)]="pwd2">
+    <div>
+        <label>Repita la contraseña:</label>
+        <input type="password" title="pwd2" [(ngModel)]="pwd2" required>
+    </div>
     <br>
-    <button (clic)="registrar()"> Crear cuenta </button>
+    <button (click)="registrar()"> Crear cuenta </button>
     <br>
     <span style="color: red">{{error}}</span>
 </div>
