@@ -22,7 +22,7 @@ export class LoginComponent {
   login() {
     this.service.login(this.email, this.pwd).subscribe(
       result => {
-        this.manager.setToken(result.token);
+        this.manager.token = result.token; // Usamos el setter de la propiedad token
         alert("Inicio de sesión correcto");
         this.router.navigate(['/ecuaciones']);
       },

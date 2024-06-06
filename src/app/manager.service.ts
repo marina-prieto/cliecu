@@ -1,35 +1,25 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ManagerService {
+  private _token: string | null = null;
 
-  token?: string;
-  
-  //revisar token en almacenamiento local
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {
-    if (isPlatformBrowser(this.platformId)) {
-      const savedToken = localStorage.getItem('token');
-      this.token = savedToken !== null ? savedToken : undefined;
-    }
+  get token(): string | null {
+    return this._token;
   }
 
-  //configurar token con token recibida
-  setToken(token: string) {
-    this.token = token;
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('token', token);
-    }
-  }
-
-  //vaciar token al cerrar sesión
-  clearToken() {
-    this.token = undefined;
-    if (isPlatformBrowser(this.platformId)) {
+  set token(value: string | null) {
+    this._token = value;
+    if (value) {
+      localStorage.setItem('token', value);
+    } else {
       localStorage.removeItem('token');
     }
+  }
+
+  clearToken() {
+    this.token = null;
   }
 }
