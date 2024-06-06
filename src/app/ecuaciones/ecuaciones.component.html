@@ -1,15 +1,21 @@
-<h1>Ecuaciones:</h1>
-
-<input type="text" title="ecuacion" [(ngModel)] = "currentEquation.eq">
-<input type="number" min="1" title="lambda" [(ngModel)] = "currentEquation.lambda">
-<button (click)="add()">Add</button>
-<br>
-
-<ul *ngFor="let equation of equations">
-    <li>
-        {{equation.eq}}, {{equation.lambda}} &nbsp; 
-        <span (click)="remove(equation)">Remove</span>
-    </li>
-</ul>
-
-<button (click)="generarHamiltoniano()">Generar Hamiltoniano</button>
+<div class="ecuaciones-container">
+    <div class="ecuaciones-form">
+        <h1>Ecuaciones</h1>
+        <div class="input-group">
+            <label for="ecuacion">Ecuación:</label>
+            <input type="text" id="ecuacion" class="input-field" [(ngModel)]="currentEquation.eq" title="ecuacion">
+        </div>
+        <div class="input-group">
+            <label for="lambda">Lambda:</label>
+            <input type="number" id="lambda" class="input-field" min="1" [(ngModel)]="currentEquation.lambda" title="lambda">
+        </div>
+        <button class="button-field" (click)="add()">Añadir</button>
+        <ul *ngFor="let equation of equations" class="equation-list">
+            <li class="equation-item">
+                {{equation.eq}}, {{equation.lambda}}
+                <span class="remove-link" (click)="remove(equation)">Eliminar</span>
+            </li>
+        </ul>
+        <button class="button-field" (click)="generarHamiltoniano()">Generar Hamiltoniano</button>
+    </div>
+</div>

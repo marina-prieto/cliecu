@@ -10,40 +10,38 @@ import { ManagerService } from '../manager.service';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './ecuaciones.component.html',
-  styleUrl: './ecuaciones.component.css'
+  styleUrls: ['./ecuaciones.component.css']
 })
 export class EcuacionesComponent {
   
-  currentEquation : equation = new equation()
-  equations : equation[] = []
-  respuesta? : string
+  currentEquation : equation = new equation();
+  equations : equation[] = [];
+  respuesta? : string;
 
   constructor(private service : EcuacionesService, private manager : ManagerService) {}
   
   add() {
-    this.equations.push(this.currentEquation)
+    this.equations.push(this.currentEquation);
+    this.currentEquation = new equation(); // Reset current equation
   }
 
   remove(equation: equation) {
-    for (let i = 0 ; i < this.equations.length; i++) {
-      if (this.equations[i] === equation) {
-        this.equations.splice(i,1)
-        break
-      }
+    const index = this.equations.indexOf(equation);
+    if (index > -1) {
+      this.equations.splice(index, 1);
     }
   }
 
-  //ME FALTAN COSAS POR AQUI POR ACA Y POR TODAS PARTES!!
   generarHamiltoniano() {
     if (this.manager.token) {
       this.service.generarHamiltoniano(this.manager.token, this.equations).subscribe(
         result => { 
-          //this.respuesta = result.respuesta
+          // Handle result
         },
         error => {
-          alert("error")
+          alert("Error");
         }
-      )
+      );
     }
   }
 }
