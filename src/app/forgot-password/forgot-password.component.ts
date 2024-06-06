@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,7 +16,7 @@ export class ForgotPasswordComponent {
   error: string = "";
   message: string = "";
 
-  constructor(private service: UsersService) {}
+  constructor(private router: Router, private service: UsersService) {}
 
   requestPasswordReset() {
     this.service.requestPasswordReset(this.email).subscribe(
@@ -28,6 +29,10 @@ export class ForgotPasswordComponent {
         this.message = "";
       }
     );
+  }
+
+  goBack() {
+    this.router.navigate(['/login']);
   }
 }
 

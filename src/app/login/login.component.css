@@ -1,0 +1,112 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Evita el scroll vertical */
+}
+
+.menu-bar {
+    height: 60px; /* Ajusta esta altura según la altura de tu barra de menú */
+    background-color: #333; /* Fondo de la barra de menú */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar span {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212; /* Fondo oscuro */
+    height: calc(100vh - 60px); /* Ajusta la altura restando la altura de la barra de menú */
+    padding-top: 60px; /* Añade un padding superior igual a la altura de la barra de menú */
+}
+
+.login-form {
+    background-color: #1e1e1e; /* Fondo del formulario más claro */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    text-align: center;
+}
+
+.login-form h1 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.inputs {
+    width: 100%;
+    margin-bottom: 20px; /* Espacio entre los inputs y el botón de inicio de sesión */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #cccccc;
+}
+
+.input-group .input-field {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-left: -11px;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+.button-field {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-field:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #ff4d4d;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ff4d4d;
+    border-radius: 5px;
+    background-color: #330000;
+    animation: fadeIn 0.5s;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

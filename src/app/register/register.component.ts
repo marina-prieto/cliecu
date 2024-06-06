@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UsersService } from '../users.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -16,7 +17,7 @@ export class RegisterComponent {
   pwd2: string = "";
   error: string = "";
 
-  constructor(private service: UsersService) {}
+  constructor(private router: Router, private service: UsersService) {}
 
   ngOnInit(): void {}
 
@@ -29,5 +30,9 @@ export class RegisterComponent {
         this.error = error.error.message || 'Error en el registro';
       }
     );
+  }
+
+  goBack() {
+    this.router.navigate(['/login']);
   }
 }
