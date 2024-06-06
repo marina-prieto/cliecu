@@ -2,6 +2,8 @@ import { Routes, CanActivate } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { EcuacionesComponent } from './ecuaciones/ecuaciones.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManagerService } from './manager.service';
@@ -13,7 +15,6 @@ import { ManagerService } from './manager.service';
 class AuthGuard implements CanActivate {
   constructor(private manager: ManagerService, private router: Router) {}
 
-  //comprobación de token en local, de lo contrario, login
   canActivate(): boolean {
     if (this.manager.token) {
       return true;
@@ -27,6 +28,8 @@ class AuthGuard implements CanActivate {
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'ecuaciones', component: EcuacionesComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

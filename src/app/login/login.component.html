@@ -1,5 +1,5 @@
 <div>
-    <h1> Iniciar sesión </h1>
+    <h1>Iniciar sesión</h1>
 
     <div>
         <label>Correo:</label>
@@ -11,7 +11,10 @@
         <input type="password" title="pwd1" [(ngModel)]="pwd" required>
     </div>
     <br>
-    <button (click)="login()"> Iniciar sesión </button>
+    <button (click)="login()">Iniciar sesión</button>
     <br>
     <span style="color: red">{{error}}</span>
+    <br>
+    <a (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</a>
 </div>
+

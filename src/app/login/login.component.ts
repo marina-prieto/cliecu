@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent {
 
   email: string = "";
@@ -32,5 +31,9 @@ export class LoginComponent {
         this.error = error.error.message || 'Error en el inicio de sesión';
       }
     );
+  }
+
+  goToForgotPassword() {
+    this.router.navigate(['/forgot-password']);
   }
 }
