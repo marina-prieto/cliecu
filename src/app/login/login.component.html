@@ -12,6 +12,7 @@
             </div>
         </div>
         <button class="button-field" (click)="login()">Iniciar sesión</button>
+        <button class="button-field" (click)="goToRegister()">Registrarse</button>
         <div class="error-message" *ngIf="error">{{error}}</div>
         <a class="forgot-password" (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</a>
     </div>

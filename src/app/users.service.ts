@@ -17,7 +17,7 @@ export class UsersService {
       pwd1: pwd1,
       pwd2: pwd2
     };
-    return this.client.post(`${this.baseUrl}/registrar`, info);
+    return this.client.post(`${this.baseUrl}/register`, info);
   }
 
   login(email: string, pwd: string): Observable<any> {
