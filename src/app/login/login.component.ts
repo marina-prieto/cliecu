@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { UsersService } from '../users.service';
 import { ManagerService } from '../manager.service';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatIconModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -16,13 +17,14 @@ export class LoginComponent {
   email: string = "";
   pwd: string = "";
   error: string = "";
+  showPassword: boolean = false;
 
   constructor(private service: UsersService, private manager: ManagerService, private router: Router) {}
 
   login() {
     this.service.login(this.email, this.pwd).subscribe(
       result => {
-        this.manager.token = result.token; // Usamos el setter de la propiedad token
+        this.manager.token = result.token;
         alert("Inicio de sesión correcto");
         this.router.navigate(['/ecuaciones']);
       },
@@ -38,5 +40,9 @@ export class LoginComponent {
 
   goToRegister() {
     this.router.navigate(['/register']);
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

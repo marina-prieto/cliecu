@@ -10,21 +10,31 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent {
 
   email: string = "";
   pwd1: string = "";
   pwd2: string = "";
   error: string = "";
+  showPassword1: boolean = false;
+  showPassword2: boolean = false;
 
   constructor(private router: Router, private service: UsersService) {}
 
   ngOnInit(): void {}
 
   registrar() {
+
+    if (this.pwd1 !== this.pwd2) {
+      this.error = 'Las contraseñas no coinciden';
+      return;
+    }
+
     this.service.registrar(this.email, this.pwd1, this.pwd2).subscribe(
       () => {
         alert("Registro correcto");
+        this.router.navigate(['/login']);
       },
       error => {
         this.error = error.error.message || 'Error en el registro';
@@ -34,5 +44,13 @@ export class RegisterComponent {
 
   goBack() {
     this.router.navigate(['/login']);
+  }
+
+  togglePasswordVisibility(field: string) {
+    if (field === 'pwd1') {
+      this.showPassword1 = !this.showPassword1;
+    } else if (field === 'pwd2') {
+      this.showPassword2 = !this.showPassword2;
+    }
   }
 }

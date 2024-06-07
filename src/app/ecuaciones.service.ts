@@ -16,5 +16,5 @@ export class EcuacionesService {
       equations, { 'headers' : headers })
   }
 
-  ejecutarCodigo() {}//que es???
+  ejecutarCodigo() {}
 }

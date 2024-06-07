@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
+
 export class ForgotPasswordComponent {
   email: string = "";
   error: string = "";
@@ -23,6 +24,9 @@ export class ForgotPasswordComponent {
       result => {
         this.message = "Correo de recuperación enviado";
         this.error = "";
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 2000);
       },
       error => {
         this.error = error.error.message || 'Error al enviar el correo de recuperación';
@@ -35,4 +39,3 @@ export class ForgotPasswordComponent {
     this.router.navigate(['/login']);
   }
 }
-

@@ -3,20 +3,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../users.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css']
 })
+
 export class ResetPasswordComponent {
   newPassword: string = "";
   confirmPassword: string = "";
   error: string = "";
   message: string = "";
   token: string = "";
+  showNewPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(private service: UsersService, private route: ActivatedRoute, private router: Router) {}
 
@@ -42,5 +46,13 @@ export class ResetPasswordComponent {
         this.message = "";
       }
     );
+  }
+
+  toggleNewPasswordVisibility() {
+    this.showNewPassword = !this.showNewPassword;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 }
