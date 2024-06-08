@@ -21,10 +21,9 @@
         <button class="button-field" (click)="construirMatrizTriangular()">Construir Matriz Triangular</button>
         <button class="button-field" (click)="generarCodigo()">Generar Código DWave</button>
         <button class="button-field" (click)="ejecutarCodigo()">Ejecutar Código DWave</button>
-    </div>
-
-    <div *ngIf="respuesta">
-        <h2>Respuesta</h2>
-        <pre>{{ respuesta }}</pre>
+        <div *ngIf="respuesta">
+            <h2>Respuesta</h2>
+            <pre>{{ respuesta }}</pre>
+        </div>
     </div>
 </div>
