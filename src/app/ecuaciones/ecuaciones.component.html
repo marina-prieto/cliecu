@@ -1,3 +1,4 @@
+<!-- ecuaciones.component.html -->
 <div class="ecuaciones-container">
     <div class="ecuaciones-form">
         <h1>Ecuaciones</h1>
@@ -17,8 +18,13 @@
             </li>
         </ul>
         <button class="button-field" (click)="generarHamiltoniano()">Generar Hamiltoniano</button>
-        <button class="button-field" (click)="ejecutarCodigo()">Ejecutar Código</button>
+        <button class="button-field" (click)="construirMatrizTriangular()">Construir Matriz Triangular</button>
+        <button class="button-field" (click)="generarCodigo()">Generar Código DWave</button>
+        <button class="button-field" (click)="ejecutarCodigo()">Ejecutar Código DWave</button>
     </div>
 
-    <code> {{respuesta}} </code>
+    <div *ngIf="respuesta">
+        <h2>Respuesta</h2>
+        <pre>{{ respuesta }}</pre>
+    </div>
 </div>

@@ -13,16 +13,16 @@ import { ManagerService } from '../manager.service';
   styleUrls: ['./ecuaciones.component.css']
 })
 export class EcuacionesComponent {
-  
-  currentEquation : equation = new equation();
-  equations : equation[] = [];
-  respuesta? : string;
 
-  constructor(private service : EcuacionesService, private manager : ManagerService) {}
-  
+  currentEquation: equation = new equation();
+  equations: equation[] = [];
+  respuesta?: string;
+
+  constructor(private service: EcuacionesService, private manager: ManagerService) {}
+
   add() {
     this.equations.push(this.currentEquation);
-    this.currentEquation = new equation(); // Reset current equation
+    this.currentEquation = new equation();
   }
 
   remove(equation: equation) {
@@ -35,17 +35,61 @@ export class EcuacionesComponent {
   generarHamiltoniano() {
     if (this.manager.token) {
       this.service.generarHamiltoniano(this.manager.token, this.equations).subscribe(
-        result => { 
-          // Handle result
+        result => {
+          this.respuesta = result;
         },
         error => {
-          alert("Error");
+          console.error('Error generando Hamiltoniano:', error);
         }
       );
+    } else {
+      alert("Token no disponible");
+    }
+  }
+
+  construirMatrizTriangular() {
+    if (this.manager.token) {
+      this.service.construirMatrizTriangular(this.manager.token, this.equations).subscribe(
+        result => {
+          this.respuesta = result;
+        },
+        error => {
+          alert("Error construyendo matriz triangular");
+        }
+      );
+    } else {
+      alert("Token inválido");
+    }
+  }
+
+  generarCodigo() {
+    if (this.manager.token) {
+      this.service.generarCodigo(this.manager.token, this.equations).subscribe(
+        result => {
+          this.respuesta = result;
+        },
+        error => {
+          alert("Error generando código DWave");
+        }
+      );
+    } else {
+      alert("Token inválido");
     }
   }
 
   ejecutarCodigo() {
-    
+    if (this.manager.token) {
+      this.service.ejecutarCodigo(this.manager.token, this.equations).subscribe(
+        result => {
+          this.respuesta = result;
+        },
+        error => {
+          console.error('Error ejecutando código:', error);
+          alert("Error");
+        }
+      );
+    } else {
+      alert("Token no disponible");
+    }
   }
 }
