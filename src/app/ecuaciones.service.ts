@@ -12,9 +12,14 @@ export class EcuacionesService {
   generarHamiltoniano(token : string, equations : equation[]) {
     const headers = new HttpHeaders().set('token', token)
 
-    return this.client.put("http://localhost:8080/ecuaciones/generarHamiltoniano", 
+    return this.client.put<any>("http://localhost:8080/ecuaciones/generarHamiltoniano", 
       equations, { 'headers' : headers })
   }
 
-  ejecutarCodigo() {}
+  ejecutarCodigo(token : string, equations : equation[]) {
+    const headers = new HttpHeaders().set('token', token)
+
+    return this.client.put<any>("http://localhost:8080/dwave/ejecutarCodigo", 
+      equations, { 'headers' : headers })
+  }
 }
