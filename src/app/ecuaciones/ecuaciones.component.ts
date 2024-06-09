@@ -16,8 +16,10 @@ export class EcuacionesComponent {
 
   currentEquation: equation = new equation();
   equations: equation[] = [];
-  respuesta?: string;
+  resultadoHamiltoniano?: string;
   matrizTriangular?: number[][];
+  resultadoEjecucion?: string;
+  codigoGenerado: boolean = false; // Nueva variable
 
   constructor(private service: EcuacionesService, private manager: ManagerService) {}
 
@@ -37,11 +39,11 @@ export class EcuacionesComponent {
     if (this.manager.token) {
       this.service.generarHamiltoniano(this.manager.token, this.equations).subscribe(
         result => {
-          this.respuesta = result;
+          this.resultadoHamiltoniano = result;
         },
         error => {
           console.error('Error generando Hamiltoniano:', error);
-          this.respuesta = `Error: ${error.message}`;
+          this.resultadoHamiltoniano = `Error: ${error.message}`;
         }
       );
     } else {
@@ -70,9 +72,11 @@ export class EcuacionesComponent {
       this.service.generarCodigo(this.manager.token, this.equations).subscribe(
         result => {
           alert(result);
+          this.codigoGenerado = true; // Marcar como código generado
         },
         error => {
           alert("Error generando código DWave");
+          this.codigoGenerado = false;
         }
       );
     } else {
@@ -84,11 +88,11 @@ export class EcuacionesComponent {
     if (this.manager.token) {
       this.service.ejecutarCodigo(this.manager.token, this.equations).subscribe(
         result => {
-          this.respuesta = result;
+          this.resultadoEjecucion = result;
         },
         error => {
           console.error('Error ejecutando código:', error);
-          alert("Error");
+          this.resultadoEjecucion = `Error: ${error.message}`;
         }
       );
     } else {

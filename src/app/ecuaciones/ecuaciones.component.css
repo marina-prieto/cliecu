@@ -5,6 +5,7 @@
     background-color: #121212;
     height: 100vh;
     padding-top: 60px;
+    overflow-y: auto;
 }
 
 .ecuaciones-form {
@@ -13,11 +14,11 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: calc(100% - 40px);
-    max-width: none;
+    max-width: 800px;
     text-align: center;
 }
 
-.ecuaciones-form h1 {
+.ecuaciones-form h1, .ecuaciones-form h2 {
     margin-bottom: 20px;
     color: #ffffff;
 }
@@ -56,7 +57,12 @@
     margin-bottom: 10px;
 }
 
-.button-field:hover {
+.button-field:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.button-field:hover:not(:disabled) {
     background-color: #0056b3;
 }
 

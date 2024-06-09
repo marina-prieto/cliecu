@@ -9,21 +9,24 @@
             <label for="lambda">Lambda:</label>
             <input type="number" id="lambda" class="input-field" min="1" [(ngModel)]="currentEquation.lambda" title="lambda">
         </div>
-        <button class="button-field" (click)="add()">Añadir</button>
+        <button class="button-field" (click)="add()">Añadir ecuación</button>
         <ul *ngFor="let equation of equations" class="equation-list">
             <li class="equation-item">
                 {{equation.eq}}, {{equation.lambda}}
                 <span class="remove-link" (click)="remove(equation)">Eliminar</span>
             </li>
         </ul>
+        <br>
         <button class="button-field" (click)="generarHamiltoniano()">Generar Hamiltoniano</button>
         <button class="button-field" (click)="construirMatrizTriangular()">Construir Matriz Triangular</button>
         <button class="button-field" (click)="generarCodigo()">Generar Código DWave</button>
-        <button class="button-field" (click)="ejecutarCodigo()">Ejecutar Código DWave</button>
-        <div *ngIf="respuesta">
-            <h2>Hamiltoniano</h2>
-            <pre>{{ respuesta }}</pre>
+        <button class="button-field" (click)="ejecutarCodigo()" [disabled]="!codigoGenerado">Ejecutar Código DWave</button>
+        
+        <div *ngIf="resultadoHamiltoniano">
+            <h2>Resultado del Hamiltoniano</h2>
+            <pre>{{ resultadoHamiltoniano }}</pre>
         </div>
+        
         <div *ngIf="matrizTriangular">
             <h2>Matriz Triangular</h2>
             <table>
@@ -31,6 +34,11 @@
                     <td *ngFor="let value of row">{{ value }}</td>
                 </tr>
             </table>
+        </div>
+        
+        <div *ngIf="resultadoEjecucion">
+            <h2>Resultado de la Ejecución</h2>
+            <pre>{{ resultadoEjecucion }}</pre>
         </div>
     </div>
 </div>
