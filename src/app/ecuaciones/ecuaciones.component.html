@@ -10,7 +10,7 @@
             <label for="lambda">Lambda:</label>
             <input type="number" id="lambda" class="input-field" min="1" [(ngModel)]="currentEquation.lambda" title="lambda">
         </div>
-        <button class="button-field" (click)="add()">Añadir</button>
+        <button class="button-field" (click)="add()">Añadir ecuación</button>
         <ul *ngFor="let equation of equations" class="equation-list">
             <li class="equation-item">
                 {{equation.eq}}, {{equation.lambda}}
@@ -22,7 +22,7 @@
         <button class="button-field" (click)="generarCodigo()">Generar Código DWave</button>
         <button class="button-field" (click)="ejecutarCodigo()">Ejecutar Código DWave</button>
         <div *ngIf="respuesta">
-            <h2>Respuesta</h2>
+            <h2>Resultado</h2>
             <pre>{{ respuesta }}</pre>
         </div>
     </div>

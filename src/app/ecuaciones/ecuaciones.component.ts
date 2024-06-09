@@ -40,6 +40,7 @@ export class EcuacionesComponent {
         },
         error => {
           console.error('Error generando Hamiltoniano:', error);
+          this.respuesta = `Error: ${error.message}`;
         }
       );
     } else {
