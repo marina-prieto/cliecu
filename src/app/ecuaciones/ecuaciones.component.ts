@@ -17,6 +17,7 @@ export class EcuacionesComponent {
   currentEquation: equation = new equation();
   equations: equation[] = [];
   respuesta?: string;
+  matrizTriangular?: number[][];
 
   constructor(private service: EcuacionesService, private manager: ManagerService) {}
 
@@ -52,9 +53,10 @@ export class EcuacionesComponent {
     if (this.manager.token) {
       this.service.construirMatrizTriangular(this.manager.token, this.equations).subscribe(
         result => {
-          this.respuesta = result;
+          this.matrizTriangular = result;
         },
         error => {
+          console.error('Error construyendo matriz triangular:', error);
           alert("Error construyendo matriz triangular");
         }
       );

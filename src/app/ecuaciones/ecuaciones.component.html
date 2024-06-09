@@ -1,4 +1,3 @@
-<!-- ecuaciones.component.html -->
 <div class="ecuaciones-container">
     <div class="ecuaciones-form">
         <h1>Ecuaciones</h1>
@@ -10,7 +9,7 @@
             <label for="lambda">Lambda:</label>
             <input type="number" id="lambda" class="input-field" min="1" [(ngModel)]="currentEquation.lambda" title="lambda">
         </div>
-        <button class="button-field" (click)="add()">Añadir ecuación</button>
+        <button class="button-field" (click)="add()">Añadir</button>
         <ul *ngFor="let equation of equations" class="equation-list">
             <li class="equation-item">
                 {{equation.eq}}, {{equation.lambda}}
@@ -22,8 +21,16 @@
         <button class="button-field" (click)="generarCodigo()">Generar Código DWave</button>
         <button class="button-field" (click)="ejecutarCodigo()">Ejecutar Código DWave</button>
         <div *ngIf="respuesta">
-            <h2>Resultado</h2>
+            <h2>Hamiltoniano</h2>
             <pre>{{ respuesta }}</pre>
+        </div>
+        <div *ngIf="matrizTriangular">
+            <h2>Matriz Triangular</h2>
+            <table>
+                <tr *ngFor="let row of matrizTriangular">
+                    <td *ngFor="let value of row">{{ value }}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

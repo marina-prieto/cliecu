@@ -84,3 +84,19 @@
 .remove-link:hover {
     color: #ff1a1a;
 }
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    color: #ffffff;
+}
+
+table, th, td {
+    border: 1px solid #ffffff;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}

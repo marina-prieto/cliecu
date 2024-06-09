@@ -28,10 +28,7 @@ export class EcuacionesService {
 
   construirMatrizTriangular(token: string, equations: equation[]): Observable<any> {
     const headers = new HttpHeaders().set('token', token);
-    return this.client.put("http://localhost:8080/ecuaciones/construirMatrizTriangular", equations, {
-      headers,
-      responseType: 'text' as 'json'
-    });
+    return this.client.put<any>("http://localhost:8080/ecuaciones/generarMatrizTriangular", equations, { headers });
   }
 
   generarCodigo(token: string, equations: equation[]): Observable<any> {
