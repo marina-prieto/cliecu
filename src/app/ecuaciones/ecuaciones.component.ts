@@ -69,7 +69,7 @@ export class EcuacionesComponent {
     if (this.manager.token) {
       this.service.generarCodigo(this.manager.token, this.equations).subscribe(
         result => {
-          this.respuesta = result;
+          alert(result);
         },
         error => {
           alert("Error generando código DWave");

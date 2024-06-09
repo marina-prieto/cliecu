@@ -8,11 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class EcuacionesService {
 
+  private apiUrl = 'http://localhost:8080';
+
   constructor(private client: HttpClient) { }
 
   generarHamiltoniano(token: string, equations: equation[]): Observable<any> {
     const headers = new HttpHeaders().set('token', token);
-    return this.client.put("http://localhost:8080/ecuaciones/generarHamiltoniano", equations, {
+    return this.client.put(`${this.apiUrl}/ecuaciones/generarHamiltoniano`, equations, {
       headers,
       responseType: 'text' as 'json'
     });
@@ -20,7 +22,7 @@ export class EcuacionesService {
 
   ejecutarCodigo(token: string, equations: equation[]): Observable<any> {
     const headers = new HttpHeaders().set('token', token);
-    return this.client.put("http://localhost:8080/dwave/ejecutarCodigo", equations, {
+    return this.client.put(`${this.apiUrl}/dwave/ejecutarCodigo`, equations, {
       headers,
       responseType: 'text' as 'json'
     });
@@ -28,12 +30,12 @@ export class EcuacionesService {
 
   construirMatrizTriangular(token: string, equations: equation[]): Observable<any> {
     const headers = new HttpHeaders().set('token', token);
-    return this.client.put<any>("http://localhost:8080/ecuaciones/generarMatrizTriangular", equations, { headers });
+    return this.client.put<any>(`${this.apiUrl}/ecuaciones/generarMatrizTriangular`, equations, { headers });
   }
 
   generarCodigo(token: string, equations: equation[]): Observable<any> {
     const headers = new HttpHeaders().set('token', token);
-    return this.client.put("http://localhost:8080/dwave/generarCodigo", equations, {
+    return this.client.put(`${this.apiUrl}/dwave/generarCodigo`, equations, {
       headers,
       responseType: 'text' as 'json'
     });
