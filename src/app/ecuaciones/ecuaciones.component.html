@@ -9,14 +9,13 @@
             <label for="lambda">Lambda:</label>
             <input type="number" id="lambda" class="input-field" min="1" [(ngModel)]="currentEquation.lambda" title="lambda">
         </div>
-        <button class="button-field" (click)="add()">Añadir ecuación</button>
+        <button class="button-field" (click)="add()" [disabled]="!currentEquation.eq">Añadir</button>
         <ul *ngFor="let equation of equations" class="equation-list">
             <li class="equation-item">
                 {{equation.eq}}, {{equation.lambda}}
                 <span class="remove-link" (click)="remove(equation)">Eliminar</span>
             </li>
         </ul>
-        <br>
         <button class="button-field" (click)="generarHamiltoniano()">Generar Hamiltoniano</button>
         <button class="button-field" (click)="construirMatrizTriangular()">Construir Matriz Triangular</button>
         <button class="button-field" (click)="generarCodigo()">Generar Código DWave</button>
